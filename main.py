@@ -5,6 +5,7 @@ transacoes=funcoes.carregar_dados()
 
 
 while True:
+    funcoes.cabecalho('MENU')
     resposta=funcoes.menu(['Registrar uma Transação', 'Listar todas as Transações', 'Mostrar Saldo',
                    'Ver total por categoria','Sair'])
     if resposta == 1:
@@ -30,10 +31,13 @@ while True:
         
     elif resposta == 2:
         for transacao in transacoes:
-            print(transacao)
+            print(transacao,end='')
+        print()
 
     elif resposta == 3:
-        print('ok 3')
+        saldo=funcoes.calcular_saldo(transacoes)
+        print(f'Saldo: R${saldo:.2f}')
+
     elif resposta == 4:
         print('ok 4')
     elif resposta == 5:
