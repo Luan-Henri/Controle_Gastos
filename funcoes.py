@@ -37,7 +37,7 @@ def carregar_dados():
             return json.load(arquivo)
 
     except (FileNotFoundError, json.JSONDecodeError):
-        return '<sem transações no momento>'
+        return []
 
 def calcular_saldo(transacoes):
     saldo=0
@@ -49,7 +49,16 @@ def calcular_saldo(transacoes):
             saldo-=transacao['valor']
     return saldo
     
-
+def mostrar_transacoes(transacoes):
+    print('-'*37)
+    print(f"{'TIPO':<8}{'VALOR':^16}  {'CATEGORIA':<15}")
+    print('-'*37)
+    for transacao in transacoes:
+        tipo = transacao['tipo']
+        valor = transacao['valor']
+        categoria = transacao['categoria'][:15]
+        print(f"{tipo:<8}   R${valor:^8.2f}    {categoria:<15}")
+    print('-'*37)
 
     
 

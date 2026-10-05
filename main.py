@@ -3,7 +3,6 @@ from time import sleep
 
 transacoes=funcoes.carregar_dados()
 
-
 while True:
     funcoes.cabecalho('MENU')
     resposta=funcoes.menu(['Registrar uma Transação', 'Listar todas as Transações', 'Mostrar Saldo',
@@ -30,9 +29,10 @@ while True:
         funcoes.salvar_dados(transacoes)
         
     elif resposta == 2:
-        for transacao in transacoes:
-            print(transacao,end='')
-        print()
+        if transacoes:
+            funcoes.mostrar_transacoes(transacoes)
+        else:
+            print('<Nenhuma transação Registrada Ainda>')
 
     elif resposta == 3:
         saldo=funcoes.calcular_saldo(transacoes)

@@ -9,8 +9,11 @@ def salvar_dados(transacoes):
   Serve para criar uma lista contendo um dicionário com todas as transações registradas pelo usuário;
 def carregar_dados():
   Serve para trazer essa lista com as transações guardadas e mostrar ao usuário;
-Hoje 30/09/2026 fiz a parte 3 que mostrar o saldo.
+--> Dia 30/09/2026 fiz a parte 3 que mostrar o saldo.
 def calacular_saldo(transacoes)
   Serve para que se o 'tipo' for 'ENTRADA' ele soma o 'valor' ao saldo e se for 'tipo' 'SAIDA' ele subtraia o'valor' do saldo
+--> Dia 05/10/2026 criei uma função para mostrar melhor as transações:
+def mostrar_transacoes(transacoes)
+   Agora é apresentado em tabelas organizadas por: TIPO, VALOR e CATEGORIA
 
-Programa em desenvolvimento: Meu próximo passo agora é criar a função que ira mostrar o saldo por categoria.
+Programa em desenvolvimento: Meu próximo passo agora é criar a função 4, que ira mostrar o saldo por categoria.
