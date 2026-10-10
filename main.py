@@ -39,7 +39,16 @@ while True:
         print(f'Saldo: R${saldo:.2f}')
 
     elif resposta == 4:
-        print('ok 4')
+        if transacoes:
+            print('-'*35)
+            print(f"{'CATEGORIA':<15} {'TOTAL':>10} ")
+            print('-'*35)
+            totais=funcoes.total_por_categoria(transacoes)
+            for categoria, total in totais.items():
+                print(f'{categoria:<15} {total:>10.2f}')
+            print('-'*35)
+        else:
+            print('<Nenhuma transação Registrada Ainda>')
     elif resposta == 5:
         print('\033[31mFIM DO PROGRAMA\033[m')
         break

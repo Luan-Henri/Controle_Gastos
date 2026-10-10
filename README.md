@@ -15,5 +15,8 @@ def calacular_saldo(transacoes)
 --> Dia 05/10/2026 criei uma função para mostrar melhor as transações:
 def mostrar_transacoes(transacoes)
    Agora é apresentado em tabelas organizadas por: TIPO, VALOR e CATEGORIA
+--> Dia 10/10/2026 terminaei a função 4 que mostra o total por categoria, com isso finaliza a Versão 1(V1) do meu projeto!
+def total_por_categoria
+  Mostra o valor seja positivo ou negativo por categoria
 
-Programa em desenvolvimento: Meu próximo passo agora é criar a função 4, que ira mostrar o saldo por categoria.
+Programa em desenvolvimento: Meu próximo passo agora é ir para a Versão 2(V2) onde vou adicionar a data para filtrar por mês. 

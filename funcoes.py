@@ -60,7 +60,18 @@ def mostrar_transacoes(transacoes):
         print(f"{tipo:<8}   R${valor:^8.2f}    {categoria:<15}")
     print('-'*37)
 
+def total_por_categoria(transacoes):
+    totais={}
+    for transacao in transacoes:
+        if transacao['tipo'] == 'ENTRADA':
+            valor=transacao['valor']
+        elif transacao['tipo'] == 'SAIDA':
+            valor=-transacao['valor']
+        totais[transacao['categoria']]=totais.get(transacao['categoria'], 0) + valor
+    return totais
     
+         
+         
 
 
     
