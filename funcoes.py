@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, date
 
 def linha():
     print('='*35)
@@ -50,15 +51,18 @@ def calcular_saldo(transacoes):
     return saldo
     
 def mostrar_transacoes(transacoes):
-    print('-'*37)
-    print(f"{'TIPO':<8}{'VALOR':^16}  {'CATEGORIA':<15}")
-    print('-'*37)
+    print('-'*50)
+    print(f"{'TIPO':<8}{'VALOR R$':^16}{'CATEGORIA':<16}{'DATA':<12}")
+    print('-'*50)
     for transacao in transacoes:
         tipo = transacao['tipo']
         valor = transacao['valor']
         categoria = transacao['categoria'][:15]
-        print(f"{tipo:<8}   R${valor:^8.2f}    {categoria:<15}")
-    print('-'*37)
+        data = transacao['data'][:12]
+        data_guardada=datetime.strptime(data,'%Y-%m-%d')
+        data_formatada=data_guardada.strftime('%d/%m/%Y')
+        print(f"{tipo:<8}{valor:^16.2f}{categoria:<16}{data_formatada:<12}")
+    print('-'*50)
 
 def total_por_categoria(transacoes):
     totais={}
@@ -70,7 +74,24 @@ def total_por_categoria(transacoes):
         totais[transacao['categoria']]=totais.get(transacao['categoria'], 0) + valor
     return totais
     
-         
+def leia_data():
+    while True:
+        texto=input('DATA [DD/MM/AAAA], ENTER para data atual: ').strip()
+
+        if not texto:
+            data_final=date.today().isoformat()
+            return data_final
+
+        try:
+            data = datetime.strptime(texto, '%d/%m/%Y')
+            data_final=data.date().isoformat()
+            return data_final
+        
+        except ValueError:
+            print('DATA INVÁLIDA. Digite novamente!')
+
+
+            
          
 
 

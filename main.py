@@ -25,6 +25,9 @@ while True:
                 print('Digite um valor real válido')
 
         transacao['categoria']=input('Categoria: ').strip().lower()
+
+        transacao['data']=funcoes.leia_data()
+
         transacoes.append(transacao)
         funcoes.salvar_dados(transacoes)
         
@@ -41,7 +44,7 @@ while True:
     elif resposta == 4:
         if transacoes:
             print('-'*35)
-            print(f"{'CATEGORIA':<15} {'TOTAL':>10} ")
+            print(f"{'CATEGORIA':<15} {'TOTAL R$':>10} ")
             print('-'*35)
             totais=funcoes.total_por_categoria(transacoes)
             for categoria, total in totais.items():

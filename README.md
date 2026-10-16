@@ -18,5 +18,8 @@ def mostrar_transacoes(transacoes)
 --> Dia 10/10/2026 terminaei a função 4 que mostra o total por categoria, com isso finaliza a Versão 1(V1) do meu projeto!
 def total_por_categoria
   Mostra o valor seja positivo ou negativo por categoria
+--> Dia 16/10/2026 V2 em progresso, já criei a opção de perguntar e guardar a data das trasnsações, já coloquei ela na função mostrar_transacoes(transacoes) de forma formatada em DD/MM/AAAA.
+def leia_data()
+  pergunta a data e guarda no arquivo entardas.
 
-Programa em desenvolvimento: Meu próximo passo agora é ir para a Versão 2(V2) onde vou adicionar a data para filtrar por mês. 
+Programa em desenvolvimento: Meu próximo passo agora é remover e editar uma transação e depois filtrar ou resumir por mês.
