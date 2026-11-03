@@ -52,16 +52,16 @@ def calcular_saldo(transacoes):
     
 def mostrar_transacoes(transacoes):
     print('-'*50)
-    print(f"{'TIPO':<8}{'VALOR R$':^16}{'CATEGORIA':<16}{'DATA':<12}")
+    print(f"{'Nº':<4}{'TIPO':<8}{'VALOR R$':^16}{'CATEGORIA':<16}{'DATA':<12}")
     print('-'*50)
-    for transacao in transacoes:
+    for numero, transacao in enumerate(transacoes, start=1):
         tipo = transacao['tipo']
         valor = transacao['valor']
         categoria = transacao['categoria'][:15]
         data = transacao['data'][:12]
         data_guardada=datetime.strptime(data,'%Y-%m-%d')
         data_formatada=data_guardada.strftime('%d/%m/%Y')
-        print(f"{tipo:<8}{valor:^16.2f}{categoria:<16}{data_formatada:<12}")
+        print(f"{numero:<4}{tipo:<8}{valor:^16.2f}{categoria:<16}{data_formatada:<12}")
     print('-'*50)
 
 def total_por_categoria(transacoes):
@@ -89,7 +89,6 @@ def leia_data():
         
         except ValueError:
             print('DATA INVÁLIDA. Digite novamente!')
-
 
             
          

@@ -21,5 +21,6 @@ def total_por_categoria
 --> Dia 16/10/2026 V2 em progresso, já criei a opção de perguntar e guardar a data das trasnsações, já coloquei ela na função mostrar_transacoes(transacoes) de forma formatada em DD/MM/AAAA.
 def leia_data()
   pergunta a data e guarda no arquivo entardas.
+--> Dia 03/11/2026 fiz a opção de remover uma transação, nela mostra a lista de todas as transações com um número correspondente e ao digitar o mesmo, ele tira tal transação da lista 'entradas.json' e salva ela. 
 
-Programa em desenvolvimento: Meu próximo passo agora é remover e editar uma transação e depois filtrar ou resumir por mês.
+Programa em desenvolvimento: Meu próximo passo agora é editar uma transação e depois filtrar ou resumir por mês.
