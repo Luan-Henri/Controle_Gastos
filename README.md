@@ -22,5 +22,6 @@ def total_por_categoria
 def leia_data()
   pergunta a data e guarda no arquivo entardas.
 --> Dia 03/11/2026 fiz a opção de remover uma transação, nela mostra a lista de todas as transações com um número correspondente e ao digitar o mesmo, ele tira tal transação da lista 'entradas.json' e salva ela. 
+-- Dia 04/11/2026 Fiz a opção para editar transações, nela já coloquei para editar a categoria e o valor...
 
-Programa em desenvolvimento: Meu próximo passo agora é editar uma transação e depois filtrar ou resumir por mês.
+Programa em desenvolvimento: Meu próximo passo agora é na opção de editar uma transação colocar as opções DATA e TIPO e depois filtrar ou resumir por mês.

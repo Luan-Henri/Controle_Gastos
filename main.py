@@ -7,7 +7,7 @@ transacoes=funcoes.carregar_dados()
 while True:
     funcoes.cabecalho('MENU')
     resposta=funcoes.menu(['Registrar uma Transação', 'Listar todas as Transações', 'Mostrar Saldo',
-                   'Ver total por categoria','Remover uma Transação','Sair'])
+                   'Ver total por categoria','Remover uma Transação', 'Editar Uma Transação', 'Sair'])
 #resposta 1 - Registrar um transação:    
     if resposta == 1:
         transacao=dict()
@@ -64,12 +64,49 @@ while True:
             num=funcoes.leiaInt('Número da transação a remover: ')
             if 1 <= num <= len(transacoes):
                 break
-            print('Número inválido! Digite novamente!')
+            print('Número inválido! Digite novamente...')
         removido=transacoes.pop(num-1)
         funcoes.salvar_dados(transacoes)
         print('Transação removida com sucesso')
-#Resposta 6 - Fim do Programa:        
+#Resposta 6 - Editar Uma Transação:
     elif resposta == 6:
+        if transacoes:
+            funcoes.mostrar_transacoes(transacoes)
+    
+            while True:
+                num=funcoes.leiaInt('Número da transação a editar: ')
+                if 1 <= num <= len(transacoes):
+                    break
+                print('Número inválido! Digite novamente...')
+            escolhido=transacoes[num-1]
+            print('ENTER para manter valor atual!')
+            #Nova Categoria
+            nova_categoria=input(f"Nova categoria [{escolhido['categoria']}] para: ").strip().lower()
+            if nova_categoria:
+                escolhido['categoria'] = nova_categoria
+            print('Sucesso! Categoria atualizada para:', escolhido['categoria'])
+            #Novo Valor
+            while True:
+                novo_valor=input(f"Novo valor [{escolhido['valor']:.2f}] para: ").strip().replace(',','.')
+                if not novo_valor:
+                    break
+                try:
+                    novo_valor = float(novo_valor)
+                except ValueError:
+                    print('Digite um valor válido.')
+                    continue
+                if novo_valor <= 0:
+                    print('O valor deve ser maior que zero!')
+                    continue
+                escolhido['valor'] = novo_valor
+                break
+            print(f"Sucesso! Valor atualizado para: {escolhido['valor']:.2f}")
+
+            funcoes.salvar_dados(transacoes)
+        else:
+            print('<Nenhuma transação Registrada Ainda>')
+#Resposta 7 - Fim do Programa:        
+    elif resposta == 7:
         print('\033[31mFIM DO PROGRAMA\033[m')
         break
     else:
