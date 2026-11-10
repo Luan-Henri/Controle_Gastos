@@ -23,5 +23,8 @@ def leia_data()
   pergunta a data e guarda no arquivo entardas.
 --> Dia 03/11/2026 fiz a opção de remover uma transação, nela mostra a lista de todas as transações com um número correspondente e ao digitar o mesmo, ele tira tal transação da lista 'entradas.json' e salva ela. 
 -- Dia 04/11/2026 Fiz a opção para editar transações, nela já coloquei para editar a categoria e o valor...
+-- Dia 10/11/2026 Coloquei DATA e TIPO para editar e criei uma função para diminuir o código no main
+def editar_transacao(transacao):
+  Mostra as transacoes com seu número correspondete e pergunta um po um do que quer mudar, apertando ENTER ele mantem os valores atuais.
 
-Programa em desenvolvimento: Meu próximo passo agora é na opção de editar uma transação colocar as opções DATA e TIPO e depois filtrar ou resumir por mês.
+Programa em desenvolvimento: Meu próximo passo agora é filtrar ou resumir por mês.

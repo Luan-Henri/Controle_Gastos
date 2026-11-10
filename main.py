@@ -55,91 +55,24 @@ while True:
             print('-'*35)
         else:
             print('<Nenhuma transação Registrada Ainda>')
-#Resposta 5 - Excluir uma transação:
+#Resposta 5 - Excluir uma transação: 
     elif resposta == 5:
         if transacoes:
-            funcoes.mostrar_transacoes(transacoes)
+            num = funcoes.escolher_transacao(transacoes, 'remover')
+            removido = transacoes.pop(num - 1)
+            funcoes.salvar_dados(transacoes)
+            print('Transação removida com sucesso')
         else:
             print('<Nenhuma transação Registrada Ainda>')
-        while True:
-            num=funcoes.leiaInt('Número da transação a remover: ')
-            if 1 <= num <= len(transacoes):
-                break
-            print('Número inválido! Digite novamente...')
-        removido=transacoes.pop(num-1)
-        funcoes.salvar_dados(transacoes)
-        print('Transação removida com sucesso')
-#Resposta 6 - Editar Uma Transação:
+#Resposta 6 - Editar uma transação:
     elif resposta == 6:
         if transacoes:
-            funcoes.mostrar_transacoes(transacoes)
-    
-            while True:
-                num=funcoes.leiaInt('Número da transação a editar: ')
-                if 1 <= num <= len(transacoes):
-                    break
-                print('Número inválido! Digite novamente...')
-            escolhido=transacoes[num-1]
-            print('ENTER para manter valor atual!')
-            sleep(1)
-            #Nova Categoria
-            nova_categoria=input(f"Nova categoria [{escolhido['categoria']}] para: ").strip().lower()
-            if not nova_categoria:
-                print('Categoria atual mantida!')
-            if nova_categoria:
-                escolhido['categoria'] = nova_categoria
-                print(f"Sucesso! Categoria atualizada para: [{escolhido['categoria']}]")
-            sleep(1)
-            #Novo Valor
-            while True:
-                novo_valor=input(f"Novo valor [{escolhido['valor']:.2f}] para: ").strip().replace(',','.')
-                if not novo_valor:
-                    print('Valor atual mantido!')
-                    break
-                try:
-                    novo_valor = float(novo_valor)
-                except ValueError:
-                    print('Digite um valor válido.')
-                    continue
-                if novo_valor <= 0:
-                    print('O valor deve ser maior que zero!')
-                    continue
-                escolhido['valor'] = novo_valor
-                print(f"Sucesso! Valor atualizado para: [{escolhido['valor']:.2f}]")
-                break
-            sleep(1)
-            #Nova data
-            data_atual = datetime.strptime(escolhido['data'], '%Y-%m-%d').strftime('%d/%m/%Y')
-            while True:
-                nova_data=input(f"Nova data [{data_atual}] para [DD/MM/AAAA]: ").strip()
-                if not nova_data:
-                    print('Data atual mantida!')
-                    break
-                try:
-                    data_convertida = datetime.strptime(nova_data, '%d/%m/%Y')
-                except ValueError:
-                    print('Data inválida! Digite novamente.')
-                    continue
-                data_guardar = data_convertida.date().isoformat()
-                escolhido['data'] = data_guardar
-                print(f"Sucesso! Data atualizada para: [{data_convertida.strftime('%d/%m/%Y')}]")
-                break
-            sleep(1)
-            #Novo tipo
-            while True:
-                novo_tipo=input(f"Novo tipo [{escolhido['tipo']}] para [ENTRADA/SAIDA]: ").strip().upper()
-                if not novo_tipo:
-                    print('Tipo atual mantido!')
-                    break
-                elif novo_tipo in ('ENTRADA', 'SAIDA'):
-                    escolhido['tipo'] = novo_tipo
-                    print(f"Sucesso! Tipo atualizado para: [{novo_tipo}]")
-                    break
-                else:
-                    print('Tipo inválido! Digite novamente')
+            num = funcoes.escolher_transacao(transacoes, 'editar')
+            funcoes.editar_transacao(transacoes[num - 1])
             funcoes.salvar_dados(transacoes)
+            print('Transação atualizada com sucesso')
         else:
-            print('<Nenhuma transação Registrada Ainda>')
+            print('<Nenhuma transação Registrada Ainda>')           
 #Resposta 7 - Fim do Programa:        
     elif resposta == 7:
         print('\033[31mFIM DO PROGRAMA\033[m')

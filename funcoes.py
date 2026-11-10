@@ -1,5 +1,6 @@
 import json
 from datetime import datetime, date
+from time import sleep
 
 def linha():
     print('='*35)
@@ -90,8 +91,74 @@ def leia_data():
         except ValueError:
             print('DATA INVÁLIDA. Digite novamente!')
 
+def escolher_transacao(transacoes, acao):
+    mostrar_transacoes(transacoes)
+    while True:
+        num=leiaInt(f'Número da transação a {acao}: ')
+        if 1 <= num <= len(transacoes):
+            return num
+        print('Número inválido! Digite novamente...')
             
-         
+def editar_transacao(transacao):
+    print('Enter para manter o valor atual!')
+    #Nova Categoria
+    nova_categoria=input(f"Categoria [{transacao['categoria']}] para: ").strip().lower()
+    if not nova_categoria:
+        print('Categoria atual mantida!')
+    if nova_categoria:
+        transacao['categoria'] = nova_categoria
+        print(f"Sucesso! Categoria atualizada para: [{transacao['categoria']}]")
+    sleep(1)
+    #Novo Valor
+    while True:
+        novo_valor=input(f"Valor [{transacao['valor']:.2f}] para: ").strip().replace(',','.')
+        if not novo_valor:
+            print('Valor atual mantido!')
+            break
+        try:
+            novo_valor = float(novo_valor)
+        except ValueError:
+            print('Digite um valor válido.')
+            continue
+        if novo_valor <= 0:
+            print('O valor deve ser maior que zero!')
+            continue
+        transacao['valor'] = novo_valor
+        print(f"Sucesso! Valor atualizado para: [{transacao['valor']:.2f}]")
+        break
+    sleep(1)
+    #Nova data
+    data_atual = datetime.strptime(transacao['data'], '%Y-%m-%d').strftime('%d/%m/%Y')
+    while True:
+        nova_data=input(f"Data [{data_atual}] para [DD/MM/AAAA]: ").strip()
+        if not nova_data:
+            print('Data atual mantida!')
+            break
+        try:
+            data_convertida = datetime.strptime(nova_data, '%d/%m/%Y')
+        except ValueError:
+            print('Data inválida! Digite novamente.')
+            continue
+        data_guardar = data_convertida.date().isoformat()
+        transacao['data'] = data_guardar
+        print(f"Sucesso! Data atualizada para: [{data_convertida.strftime('%d/%m/%Y')}]")
+        break
+    sleep(1)
+    #Novo tipo
+    while True:
+        novo_tipo=input(f"Novo tipo [{transacao['tipo']}] para [ENTRADA/SAIDA]: ").strip().upper()
+        if not novo_tipo:
+            print('Tipo atual mantido!')
+            break
+        elif novo_tipo in ('ENTRADA', 'SAIDA'):
+            transacao['tipo'] = novo_tipo
+            print(f"Sucesso! Tipo atualizado para: [{novo_tipo}]")
+            break
+        else:
+            print('Tipo inválido! Digite novamente')
+    
+       
+                   
 
 
     
