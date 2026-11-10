@@ -1,5 +1,6 @@
 import funcoes
 from time import sleep
+from datetime import datetime
 
 transacoes=funcoes.carregar_dados()
 
@@ -101,7 +102,22 @@ while True:
                 escolhido['valor'] = novo_valor
                 break
             print(f"Sucesso! Valor atualizado para: {escolhido['valor']:.2f}")
-
+            #Nova data
+            data_atual = datetime.strptime(escolhido['data'], '%Y-%m-%d').strftime('%d/%m/%Y')
+            while True:
+                nova_data=input(f"Nova data [{data_atual}] para [DD/MM/AAAA]: ").strip()
+                if not nova_data:
+                    print('Data Mantida')
+                    break
+                try:
+                    data_convertida = datetime.strptime(nova_data, '%d/%m/%Y')
+                except ValueError:
+                    print('Data inválida! Digite novamente.')
+                    continue
+                data_guardar = data_convertida.date().isoformat()
+                escolhido['data'] = data_guardar
+                print(f"Sucesso! Data atualizada para: {data_convertida.strftime('%d/%m/%Y')}")
+                break 
             funcoes.salvar_dados(transacoes)
         else:
             print('<Nenhuma transação Registrada Ainda>')
