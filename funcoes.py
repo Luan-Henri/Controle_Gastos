@@ -52,9 +52,9 @@ def calcular_saldo(transacoes):
     return saldo
     
 def mostrar_transacoes(transacoes):
-    print('-'*50)
+    print('-'*55)
     print(f"{'Nº':<4}{'TIPO':<8}{'VALOR R$':^16}{'CATEGORIA':<16}{'DATA':<12}")
-    print('-'*50)
+    print('-'*55)
     for numero, transacao in enumerate(transacoes, start=1):
         tipo = transacao['tipo']
         valor = transacao['valor']
@@ -63,7 +63,7 @@ def mostrar_transacoes(transacoes):
         data_guardada=datetime.strptime(data,'%Y-%m-%d')
         data_formatada=data_guardada.strftime('%d/%m/%Y')
         print(f"{numero:<4}{tipo:<8}{valor:^16.2f}{categoria:<16}{data_formatada:<12}")
-    print('-'*50)
+    print('-'*55)
 
 def total_por_categoria(transacoes):
     totais={}
@@ -157,7 +157,14 @@ def editar_transacao(transacao):
         else:
             print('Tipo inválido! Digite novamente')
     
-       
+def filtrar_por_mes(transacoes, mes, ano):
+    filtradas = []
+    for transacao in transacoes:
+        data = datetime.strptime(transacao['data'], '%Y-%m-%d')
+        if data.month == mes and data.year == ano:
+            filtradas.append(transacao)
+    return filtradas
+
                    
 
 

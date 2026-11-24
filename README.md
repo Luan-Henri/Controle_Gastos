@@ -23,8 +23,11 @@ def leia_data()
   pergunta a data e guarda no arquivo entardas.
 --> Dia 03/11/2026 fiz a opção de remover uma transação, nela mostra a lista de todas as transações com um número correspondente e ao digitar o mesmo, ele tira tal transação da lista 'entradas.json' e salva ela. 
 -- Dia 04/11/2026 Fiz a opção para editar transações, nela já coloquei para editar a categoria e o valor...
--- Dia 10/11/2026 Coloquei DATA e TIPO para editar e criei uma função para diminuir o código no main
+--> Dia 10/11/2026 Coloquei DATA e TIPO para editar e criei uma função para diminuir o código no main
 def editar_transacao(transacao):
   Mostra as transacoes com seu número correspondete e pergunta um po um do que quer mudar, apertando ENTER ele mantem os valores atuais.
+--> Dia 24/11/2026 Criei a função para filtrar por mês e aqui encerro a V2!
+def filtrar_por_mês(transacoes, mes, ano)
+  Pergunta ao usuário o mês e o ano qual ele quer ver as transações somente deste período, a função cria uma nova lista mostrando somente os correspondentes daquele período X informado. 
 
-Programa em desenvolvimento: Meu próximo passo agora é filtrar ou resumir por mês.
+Programa em desenvolvimento: Meu próximo passo agora é iniciar a V3 onde vou trocar o JSON por um banco de dados.

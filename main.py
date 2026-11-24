@@ -8,7 +8,8 @@ transacoes=funcoes.carregar_dados()
 while True:
     funcoes.cabecalho('MENU')
     resposta=funcoes.menu(['Registrar uma Transação', 'Listar todas as Transações', 'Mostrar Saldo',
-                   'Ver total por categoria','Remover uma Transação', 'Editar Uma Transação', 'Sair'])
+                   'Ver total por categoria','Remover uma Transação', 'Editar Uma Transação', 
+                   'Filtrar transações por mês', 'Sair'])
 #resposta 1 - Registrar um transação:    
     if resposta == 1:
         transacao=dict()
@@ -72,13 +73,35 @@ while True:
             funcoes.salvar_dados(transacoes)
             print('Transação atualizada com sucesso')
         else:
-            print('<Nenhuma transação Registrada Ainda>')           
-#Resposta 7 - Fim do Programa:        
+            print('<Nenhuma transação Registrada Ainda>')
+#Resposta 7 - Filtrar transações por mês:
     elif resposta == 7:
+        if transacoes:
+            while True:
+                mes = funcoes.leiaInt('Mês [1 a 12]: ')
+                if 1 <= mes <= 12:
+                    break
+                print('Mês inválido! Digite novamente...')
+            while True:
+                ano = funcoes.leiaInt('Ano [AAAA]: ')
+                if 2000 <= ano <= 2100:
+                    break
+                print('Ano inválido! Digite novamente...')
+            do_mes = funcoes.filtrar_por_mes(transacoes, mes, ano)
+            if do_mes:
+                funcoes.mostrar_transacoes(do_mes)
+            else:
+                print('<Não possui transações com as datas informadas!>')
+        else:
+             print('<Nenhuma transação Registrada Ainda>')      
+#Resposta 8 - Fim do Programa:        
+    elif resposta == 8:
         print('\033[31mFIM DO PROGRAMA\033[m')
         break
     else:
         print('\033[31mOpção inválida\033[m')
     sleep(2)
+
+    
 
     
